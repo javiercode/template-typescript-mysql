@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+    servicio-micliente:
+        build: .
+        restart: always
+        environment:
+            - NODE_ENV=produccion
+            - PORT=4000
+            - MONGO_URL=mongodb://localhost:27017
+            - MONGO_DATABASE=TALLERI
+        ports:
+            - "9091:4000"
