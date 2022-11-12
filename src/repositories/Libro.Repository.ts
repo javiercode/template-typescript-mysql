@@ -1,13 +1,14 @@
 import { DeleteResult, EntityRepository, Repository, UpdateResult } from "typeorm";
-import { User } from "../entities/User";
-import { UserDto } from "../entities/dto/UserDto"
+import { LibroDto } from "../entities/dto/LibroDto"
 import {MysqlDataSource} from "../configs/db";
 import { ListPaginate } from "../entities/dto/GeneralDto";
+import { Libro } from "../entities/Libros";
 
-class UserRepository{
-    private repository = MysqlDataSource.getRepository(User);
 
-    public async findByDto (params: UserDto): Promise<User[]>{
+class LibroRepository{
+    private repository = MysqlDataSource.getRepository(Libro);
+
+    public async findByDto (params: LibroDto): Promise<Libro[]>{
         let options={}
         options={...params}
         const [result,total] = await this.repository.findAndCount(options);
@@ -15,7 +16,7 @@ class UserRepository{
         return result;
     };
     
-    public async findById (params: number): Promise<User | null>{
+    public async findById (params: number): Promise<Libro | null>{
         const result = await this.repository.findOne(
             { where:
                     { id: params}
@@ -29,20 +30,20 @@ class UserRepository{
         return firstUser;
     };
      
-    public async actualizar (id:number, param: User){
+    public async actualizar (id:number, param: Libro){
         let options={}
         options={id}
         const firstUser = await this.repository.update(options,param);
         return firstUser;
     };
      
-    public async registrar ( param: UserDto){
+    public async registrar ( param: LibroDto){
         const firstUser = await this.repository.save(param);
         return firstUser;
     };
      
      
-    public async existeUsuario (params: UserDto): Promise<User|null>{    
+    public async existeUsuario (params: LibroDto): Promise<Libro|null>{    
         let options={}
         options={
             where:{user:params}}
@@ -60,4 +61,4 @@ class UserRepository{
     };
 }
 
-export default new UserRepository();
+export default new LibroRepository();

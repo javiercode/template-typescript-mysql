@@ -2,6 +2,7 @@ import express, { application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import UserController from './controllers/usuario.controller';
+import LibroController from './controllers/libro.controller';
 
 const app = express();
 
@@ -25,5 +26,7 @@ app.get('/api/usuario/list',UserController.list);
 app.post('/api/usuario/create',UserController.registrar);
 app.put('/api/usuario/edit/:id',UserController.editar);
 app.delete('/api/usuario/delete/:id',UserController.eliminar);
+
+app.get('/api/libro/list',LibroController.list);
 
 export default app;

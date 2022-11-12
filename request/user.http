@@ -14,9 +14,9 @@ POST {{api}}/usuario/create
 Content-Type: application/json
 
 {
-    "username":"xavier",
-    "nombre":"Javier Canqui",
-    "password":"123456"
+    "username":"Tom",
+    "nombre":"Tom y Jerry",
+    "password":"123"
 }
 
 ### Editar Usuario
@@ -24,12 +24,12 @@ PUT {{api}}/usuario/edit/2
 Content-Type: application/json
 
 {
-    "username":"jcanqui",
-    "nombre":"Xavier",
-    "password":"12345678"
+    "username":"jbarrios",
+    "nombre":"Joaquin Barrios",
+    "password":"68686868"
 }
 
 
 ### Eliminar Tarea
-DELETE {{api}}/usuario/delete/1
+DELETE {{api}}/usuario/delete/2
 Content-Type: application/json
